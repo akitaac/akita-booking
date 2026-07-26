@@ -1,0 +1,3 @@
+# Never edge-cache the HTML document — always serve the latest deploy.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
