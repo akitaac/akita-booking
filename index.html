@@ -2657,6 +2657,8 @@ function sendToZapier(data){
         source:  utm.source + ' / ' + utm.medium + ' / ' + utm.campaign
       };
       try {
+        // Also create the lead in GHL (fire-and-forget; Formspree still emails us)
+        fetch('/contact', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(data) }).catch(function(){});
         const res = await fetch('https://formspree.io/f/xojyqyae', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
